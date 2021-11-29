@@ -922,6 +922,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8249230696956201412}
   - component: {fileID: 2087626607}
+  - component: {fileID: 1168810126563782051}
   m_Layer: 0
   m_Name: RightHand
   m_TagString: Untagged
@@ -964,3 +965,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1168810126563782051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8732751464224707454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 597c8439bf9474844a7dcab7f27287cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controllerActionGrip: {fileID: -3184277007582178168, guid: c348712bda248c246b8c49b3db54643f, type: 3}
+  controllerActionTrigger: {fileID: -1327887906232808930, guid: c348712bda248c246b8c49b3db54643f, type: 3}
