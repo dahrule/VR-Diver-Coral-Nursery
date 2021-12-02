@@ -6,7 +6,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    [Range(0, 5)] public int staghornGoal = 3;
+    [Tooltip("How many corals of each type must the player plant to achieve the goal")]
+    [Range(0, 5)] public int staghornGoal = 3; 
     [Range(0, 5)] public int elkhornGoal = 2;
 
     [SerializeField] GameObject floatingScreenTaskComplete;

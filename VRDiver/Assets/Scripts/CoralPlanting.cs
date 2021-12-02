@@ -7,12 +7,9 @@ using System;
 // Represents the action of planting a coral by forcing the player to hold a coral fragment inside the planting spot for a certain amount of time before the action is considered complete. The action can be interrupted and restored at a later time.
 public class CoralPlanting : MonoBehaviour
 {
-    //static int staghornCount=0;
-    //static int elkhornCount=0;
-
+   
     public static Dictionary<CoralTypes, int> coralsCollection = InitDict(); 
     
-
     public static event Action<Dictionary<CoralTypes,int>> OnPlantingActionComplete;
 
     [Tooltip("Time in seconds that a coral fragment being held must remain inside the trigger for the planting action to be completed")]
@@ -43,7 +40,6 @@ public class CoralPlanting : MonoBehaviour
         audioSource.clip = plantingSFX; //assign an audioclip to avoid null reference errors later.
         plantingActionCheck = PlantingActionCheckCoroutine();
         secondsLeftToCompleteAction = secondsToCompleteAction;
-        CoralPlanting.InitDict();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -51,7 +47,6 @@ public class CoralPlanting : MonoBehaviour
         //Start planting-action check only if the object colliding the planting spot trigger is of the correct type and is being held.
         if (other.CompareTag(Actioner) && coralAtSpot == null)
         {
-            //Debug.Log("Coral entered");
             coralAtSpot = other.gameObject;
 
             if (coralAtSpot.GetComponent<MyGrabable>().IsHeld)
@@ -63,7 +58,6 @@ public class CoralPlanting : MonoBehaviour
         //Alternatively, start the planting-action check when there is a coral already within the trigger, and the player enters. Accounts for the case when the player has left without concluding the planting action.
         else if (coralAtSpot != null && other.CompareTag("Player"))
         {
-            //Debug.Log("Hand inside with coral in");
             StopCoroutine(plantingActionCheck);
             StartCoroutine(plantingActionCheck);
         }     
@@ -150,31 +144,10 @@ public class CoralPlanting : MonoBehaviour
         //Invoke the OnComplete event.
         Coral coral = coralAtSpot.GetComponent<Coral>();
         CoralPlanting.coralsCollection[coral.coralType]= CoralPlanting.coralsCollection[coral.coralType]+1;
-
-        
-        
-       
-        //UpdateCounts(coralAtSpot.GetComponent<Coral>());
-        //Coral coral= coralAtSpot.GetComponent<Coral>();
         OnPlantingActionComplete?.Invoke(CoralPlanting.coralsCollection);
         
         Destroy(this.gameObject, actionCompleteSFX.length);
     }
-
-    /*private static void UpdateCounts(Coral coral)
-    {
-        switch (coral.coralType)
-        {
-            case CoralTypes.Staghorn:
-                staghornCount += 1;
-                break;
-            case CoralTypes.Elkhorn:
-                elkhornCount += 1;
-                break;
-            default:
-                break;
-        }
-    }*/
 
         //Normalize a set of values with a minimum and maximum values between 0 and 1.
         private float Normalize(float min, float max, float value)
@@ -191,9 +164,6 @@ public class CoralPlanting : MonoBehaviour
         {
             temp_coralsCollection.Add(val, 0);
         }
-
         return temp_coralsCollection;
-
-
     }
 }

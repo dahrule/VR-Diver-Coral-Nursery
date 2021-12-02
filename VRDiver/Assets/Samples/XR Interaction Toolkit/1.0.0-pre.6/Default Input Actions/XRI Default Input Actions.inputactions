@@ -172,10 +172,18 @@
                     "interactions": ""
                 },
                 {
-                    "name": "SlateToggleHide",
+                    "name": "SlateDisplay",
                     "type": "Button",
                     "id": "35552ff8-ad1d-454f-a0e6-be56a088c437",
                     "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "SlateToggle",
+                    "type": "Value",
+                    "id": "f4bc1f98-e58d-418c-bbfc-8a5ddd264ac2",
+                    "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
                 }
@@ -525,11 +533,22 @@
                 {
                     "name": "",
                     "id": "09e3195a-c349-4deb-9908-070ffbf5064f",
-                    "path": "<XRController>{LeftHand}/secondaryButton",
+                    "path": "<XRController>{LeftHand}/primary",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "SlateToggleHide",
+                    "groups": "Generic XR Controller",
+                    "action": "SlateDisplay",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2decc6a3-9f73-47a4-8e37-01b26d8ef801",
+                    "path": "<XRController>{LeftHand}/Primary2DAxis",
+                    "interactions": "Sector(directions=12,sweepBehavior=1),Sector(directions=2,sweepBehavior=2)",
+                    "processors": "",
+                    "groups": "Noncontinuous Move",
+                    "action": "SlateToggle",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

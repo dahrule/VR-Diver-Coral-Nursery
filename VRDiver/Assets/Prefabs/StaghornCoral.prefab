@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6468634838792514177}
   - component: {fileID: 6468634838792514182}
   m_Layer: 0
-  m_Name: Coral
+  m_Name: StaghornCoral
   m_TagString: Coral
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

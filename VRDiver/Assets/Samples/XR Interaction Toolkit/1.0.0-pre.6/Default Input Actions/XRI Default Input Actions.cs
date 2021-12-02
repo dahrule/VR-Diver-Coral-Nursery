@@ -185,10 +185,18 @@ public class @XRIDefaultInputActions : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""SlateToggleHide"",
+                    ""name"": ""SlateDisplay"",
                     ""type"": ""Button"",
                     ""id"": ""35552ff8-ad1d-454f-a0e6-be56a088c437"",
                     ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""SlateToggle"",
+                    ""type"": ""Value"",
+                    ""id"": ""f4bc1f98-e58d-418c-bbfc-8a5ddd264ac2"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """"
                 }
@@ -538,11 +546,22 @@ public class @XRIDefaultInputActions : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""09e3195a-c349-4deb-9908-070ffbf5064f"",
-                    ""path"": ""<XRController>{LeftHand}/secondaryButton"",
+                    ""path"": ""<XRController>{LeftHand}/primary"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""SlateToggleHide"",
+                    ""groups"": ""Generic XR Controller"",
+                    ""action"": ""SlateDisplay"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2decc6a3-9f73-47a4-8e37-01b26d8ef801"",
+                    ""path"": ""<XRController>{LeftHand}/Primary2DAxis"",
+                    ""interactions"": ""Sector(directions=12,sweepBehavior=1),Sector(directions=2,sweepBehavior=2)"",
+                    ""processors"": """",
+                    ""groups"": ""Noncontinuous Move"",
+                    ""action"": ""SlateToggle"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1089,7 +1108,8 @@ public class @XRIDefaultInputActions : IInputActionCollection, IDisposable
         m_XRILeftHand_Move = m_XRILeftHand.FindAction("Move", throwIfNotFound: true);
         m_XRILeftHand_RotateAnchor = m_XRILeftHand.FindAction("Rotate Anchor", throwIfNotFound: true);
         m_XRILeftHand_TranslateAnchor = m_XRILeftHand.FindAction("Translate Anchor", throwIfNotFound: true);
-        m_XRILeftHand_SlateToggleHide = m_XRILeftHand.FindAction("SlateToggleHide", throwIfNotFound: true);
+        m_XRILeftHand_SlateDisplay = m_XRILeftHand.FindAction("SlateDisplay", throwIfNotFound: true);
+        m_XRILeftHand_SlateToggle = m_XRILeftHand.FindAction("SlateToggle", throwIfNotFound: true);
         // XRI RightHand
         m_XRIRightHand = asset.FindActionMap("XRI RightHand", throwIfNotFound: true);
         m_XRIRightHand_Position = m_XRIRightHand.FindAction("Position", throwIfNotFound: true);
@@ -1212,7 +1232,8 @@ public class @XRIDefaultInputActions : IInputActionCollection, IDisposable
     private readonly InputAction m_XRILeftHand_Move;
     private readonly InputAction m_XRILeftHand_RotateAnchor;
     private readonly InputAction m_XRILeftHand_TranslateAnchor;
-    private readonly InputAction m_XRILeftHand_SlateToggleHide;
+    private readonly InputAction m_XRILeftHand_SlateDisplay;
+    private readonly InputAction m_XRILeftHand_SlateToggle;
     public struct XRILeftHandActions
     {
         private @XRIDefaultInputActions m_Wrapper;
@@ -1232,7 +1253,8 @@ public class @XRIDefaultInputActions : IInputActionCollection, IDisposable
         public InputAction @Move => m_Wrapper.m_XRILeftHand_Move;
         public InputAction @RotateAnchor => m_Wrapper.m_XRILeftHand_RotateAnchor;
         public InputAction @TranslateAnchor => m_Wrapper.m_XRILeftHand_TranslateAnchor;
-        public InputAction @SlateToggleHide => m_Wrapper.m_XRILeftHand_SlateToggleHide;
+        public InputAction @SlateDisplay => m_Wrapper.m_XRILeftHand_SlateDisplay;
+        public InputAction @SlateToggle => m_Wrapper.m_XRILeftHand_SlateToggle;
         public InputActionMap Get() { return m_Wrapper.m_XRILeftHand; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1287,9 +1309,12 @@ public class @XRIDefaultInputActions : IInputActionCollection, IDisposable
                 @TranslateAnchor.started -= m_Wrapper.m_XRILeftHandActionsCallbackInterface.OnTranslateAnchor;
                 @TranslateAnchor.performed -= m_Wrapper.m_XRILeftHandActionsCallbackInterface.OnTranslateAnchor;
                 @TranslateAnchor.canceled -= m_Wrapper.m_XRILeftHandActionsCallbackInterface.OnTranslateAnchor;
-                @SlateToggleHide.started -= m_Wrapper.m_XRILeftHandActionsCallbackInterface.OnSlateToggleHide;
-                @SlateToggleHide.performed -= m_Wrapper.m_XRILeftHandActionsCallbackInterface.OnSlateToggleHide;
-                @SlateToggleHide.canceled -= m_Wrapper.m_XRILeftHandActionsCallbackInterface.OnSlateToggleHide;
+                @SlateDisplay.started -= m_Wrapper.m_XRILeftHandActionsCallbackInterface.OnSlateDisplay;
+                @SlateDisplay.performed -= m_Wrapper.m_XRILeftHandActionsCallbackInterface.OnSlateDisplay;
+                @SlateDisplay.canceled -= m_Wrapper.m_XRILeftHandActionsCallbackInterface.OnSlateDisplay;
+                @SlateToggle.started -= m_Wrapper.m_XRILeftHandActionsCallbackInterface.OnSlateToggle;
+                @SlateToggle.performed -= m_Wrapper.m_XRILeftHandActionsCallbackInterface.OnSlateToggle;
+                @SlateToggle.canceled -= m_Wrapper.m_XRILeftHandActionsCallbackInterface.OnSlateToggle;
             }
             m_Wrapper.m_XRILeftHandActionsCallbackInterface = instance;
             if (instance != null)
@@ -1339,9 +1364,12 @@ public class @XRIDefaultInputActions : IInputActionCollection, IDisposable
                 @TranslateAnchor.started += instance.OnTranslateAnchor;
                 @TranslateAnchor.performed += instance.OnTranslateAnchor;
                 @TranslateAnchor.canceled += instance.OnTranslateAnchor;
-                @SlateToggleHide.started += instance.OnSlateToggleHide;
-                @SlateToggleHide.performed += instance.OnSlateToggleHide;
-                @SlateToggleHide.canceled += instance.OnSlateToggleHide;
+                @SlateDisplay.started += instance.OnSlateDisplay;
+                @SlateDisplay.performed += instance.OnSlateDisplay;
+                @SlateDisplay.canceled += instance.OnSlateDisplay;
+                @SlateToggle.started += instance.OnSlateToggle;
+                @SlateToggle.performed += instance.OnSlateToggle;
+                @SlateToggle.canceled += instance.OnSlateToggle;
             }
         }
     }
@@ -1540,7 +1568,8 @@ public class @XRIDefaultInputActions : IInputActionCollection, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnRotateAnchor(InputAction.CallbackContext context);
         void OnTranslateAnchor(InputAction.CallbackContext context);
-        void OnSlateToggleHide(InputAction.CallbackContext context);
+        void OnSlateDisplay(InputAction.CallbackContext context);
+        void OnSlateToggle(InputAction.CallbackContext context);
     }
     public interface IXRIRightHandActions
     {

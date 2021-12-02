@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 3442711710974541135}
   - component: {fileID: 3442711710974541131}
   m_Layer: 0
-  m_Name: TowerSocket
+  m_Name: TowerCoralSocket
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
