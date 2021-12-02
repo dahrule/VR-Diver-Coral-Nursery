@@ -170,6 +170,14 @@
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "SlateToggleHide",
+                    "type": "Button",
+                    "id": "35552ff8-ad1d-454f-a0e6-be56a088c437",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -511,6 +519,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "ActivateValue",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "09e3195a-c349-4deb-9908-070ffbf5064f",
+                    "path": "<XRController>{LeftHand}/secondaryButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SlateToggleHide",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

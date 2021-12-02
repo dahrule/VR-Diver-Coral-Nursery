@@ -1,15 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+public enum CoralTypes { Staghorn, Elkhorn };
 public class Coral : MonoBehaviour
 {
-    [SerializeField] enum CoralType {Staghorn, Elkhorn};
+    
+    [Tooltip("The species of the coral")]
+    public CoralTypes coralType;
 
-    private void Start()
-    {
-        
-    }
+    public bool isPlantationReady; //is the coral ready to be planted?
+
 }
 
 
