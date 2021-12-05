@@ -7,9 +7,8 @@ using System;
 // Represents the action of planting a coral by forcing the player to hold a coral fragment inside the planting spot for a certain amount of time before the action is considered complete. The action can be interrupted and restored at a later time.
 public class CoralPlanting : MonoBehaviour
 {
-   
-    public static Dictionary<CoralTypes, int> coralsCollection = InitDict(); 
-    
+    #region Variables
+    public static Dictionary<CoralTypes, int> coralsCollection = InitDict(); //stores planted corals amounts.
     public static event Action<Dictionary<CoralTypes,int>> OnPlantingActionComplete;
 
     [Tooltip("Time in seconds that a coral fragment being held must remain inside the trigger for the planting action to be completed")]
@@ -18,9 +17,9 @@ public class CoralPlanting : MonoBehaviour
     [Tooltip("The transform for the planted coral")]
     [SerializeField] Transform CoralAttachPoint;
 
-    [Tooltip("Objects with this tag activate the planting action")]
-    [SerializeField] [TagSelector] string Actioner;
-    
+    [Tooltip("Coral objects of type Actioner start the planting action")]
+    [SerializeField] CoralTypes Actioner;
+
     [Header("Sound & Visual effects")]
     [SerializeField] AudioClip actionCompleteSFX;
     [SerializeField] AudioClip plantingSFX;
@@ -33,7 +32,9 @@ public class CoralPlanting : MonoBehaviour
     private float secondsLeftToCompleteAction;//stores the time left to complete the planting action as the action progresses.
     private GameObject coralAtSpot; //a reference to the first coral occupying this coral planting spot.
     private AudioSource audioSource;
-    
+    #endregion
+
+    #region BuiltInMethods
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
@@ -44,8 +45,10 @@ public class CoralPlanting : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //Start planting-action check only if the object colliding the planting spot trigger is of the correct type and is being held.
-        if (other.CompareTag(Actioner) && coralAtSpot == null)
+        var coral = other.GetComponent<Coral>();
+        
+        //Start planting-action check only if the object colliding the planting spot trigger is of the correct coral type and is being held.
+        if (coral!=null && coralAtSpot == null && coral.coralType == Actioner && coral.IsPlantationReady)
         {
             coralAtSpot = other.gameObject;
 
@@ -65,21 +68,23 @@ public class CoralPlanting : MonoBehaviour
     
     private void OnTriggerExit(Collider other)
     {
-        
-        if (other.CompareTag(Actioner))//coral leaves the trigger.
+        //Stop plantingActionCheck coroutine when coral or player exit the trigger.
+        var coral = other.GetComponent<Coral>();
+        if (coral != null && coral.coralType == Actioner)// case: coral leaves the trigger.
         {
             coralAtSpot = null;
             InterruptAction(); //stops sounds
             StopCoroutine(plantingActionCheck);
         }
-        else if(coralAtSpot != null && other.CompareTag("Player"))//player leaves the trigger while a coral remains there.
+        else if(coralAtSpot != null && other.CompareTag("Player"))//case: player leaves the trigger while a coral remains there.
         {
             InterruptAction();
-            StopCoroutine(plantingActionCheck);
-            
+            StopCoroutine(plantingActionCheck);  
         }
     }
+    #endregion
 
+    #region CustomMethods
     //The coroutine where the planting-action check is executed. Runs at -coroutineTimeStep- times per second.
     private IEnumerator PlantingActionCheckCoroutine()
     {
@@ -98,7 +103,7 @@ public class CoralPlanting : MonoBehaviour
             //when the player has maintained the coral held inside the plating spot for enough time, the coroutine ends, and the action is complete.
             if (secondsLeftToCompleteAction<0)
             {
-                CompleteTask();
+                CompleteAction();
                 break;
             }
             yield return new WaitForSeconds(coroutineTimeStep);   
@@ -129,7 +134,7 @@ public class CoralPlanting : MonoBehaviour
     }
 
     //Conclude the planting action.
-    private void CompleteTask()
+    private void CompleteAction()
     {
         audioSource.clip = actionCompleteSFX;
         audioSource.PlayOneShot(actionCompleteSFX);
@@ -141,12 +146,14 @@ public class CoralPlanting : MonoBehaviour
         coralAtSpot.transform.position = CoralAttachPoint.transform.position;
         coralAtSpot.transform.rotation = CoralAttachPoint.transform.rotation;
 
-        //Invoke the OnComplete event.
+        // Update the corals dictionary amounts based on the currently planted coral.  
         Coral coral = coralAtSpot.GetComponent<Coral>();
         CoralPlanting.coralsCollection[coral.coralType]= CoralPlanting.coralsCollection[coral.coralType]+1;
+
+        //Invoke the OnPlantingActionComplete event passing the updated coral dictionary as parameter.
         OnPlantingActionComplete?.Invoke(CoralPlanting.coralsCollection);
         
-        Destroy(this.gameObject, actionCompleteSFX.length);
+        Destroy(this.gameObject, actionCompleteSFX.length); //Destroy the planting spot game object.
     }
 
         //Normalize a set of values with a minimum and maximum values between 0 and 1.
@@ -155,7 +162,8 @@ public class CoralPlanting : MonoBehaviour
         float value_norm = (value - min) / (max - min);
         return value_norm;
     }
-
+    
+    //Populates the planted corals dictionary with all coral types available in the game, and sets each to a 0 amount.
     public static Dictionary<CoralTypes,int> InitDict()
     {
         Dictionary<CoralTypes, int> temp_coralsCollection = new Dictionary<CoralTypes, int>();
@@ -166,4 +174,5 @@ public class CoralPlanting : MonoBehaviour
         }
         return temp_coralsCollection;
     }
+    #endregion
 }

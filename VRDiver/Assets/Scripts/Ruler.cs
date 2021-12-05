@@ -34,7 +34,7 @@ public class Ruler : MonoBehaviour
             Coral coral = other.gameObject.GetComponent<Coral>();
 
             //if the coral measured is ready to be planted play a right soundfx, else play a wrong soundfx.
-            if (coral.isPlantationReady)  
+            if (coral.IsPlantationReady)  
             {
                 audioSource.clip = rightSelection;
                 audioSource.PlayDelayed(timeToRegisterMeasurement);

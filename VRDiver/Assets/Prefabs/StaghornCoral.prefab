@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 6795804708503866726}
   - component: {fileID: 6468634838792514180}
   - component: {fileID: 6468634838792514183}
-  - component: {fileID: 6468634838792514177}
   - component: {fileID: 6468634838792514182}
+  - component: {fileID: 6468634838792514177}
   m_Layer: 0
   m_Name: StaghornCoral
-  m_TagString: Coral
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -65,20 +65,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.0013092458, y: 0.0014511271, z: 0.0017073588}
   m_Center: {x: -0.000065755456, y: 0.000009226799, z: 0.0007949683}
---- !u!114 &6468634838792514177
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6126123428534327260}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb767810aa6023a45b2f1b08585ec3f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  plantationReady: 1
-  type: 
 --- !u!114 &6468634838792514182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,6 +196,20 @@ MonoBehaviour:
   m_RetainTransformParent: 1
   m_AttachPointCompatibilityMode: 0
   isHeld: 0
+--- !u!114 &6468634838792514177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6126123428534327260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb767810aa6023a45b2f1b08585ec3f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coralType: 0
+  isPlantationReady: 1
 --- !u!1 &6194488342108274824
 GameObject:
   m_ObjectHideFlags: 0
@@ -253,7 +253,7 @@ GameObject:
   - component: {fileID: 6057758849538437536}
   m_Layer: 0
   m_Name: Coral_Graphic
-  m_TagString: Coral
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

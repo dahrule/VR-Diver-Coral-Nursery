@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Coral
+  - Surface
   layers:
   - Default
   - TransparentFX
@@ -17,8 +18,8 @@ TagManager:
   - Teleport
   - Ruler
   - Coral
-  - 
-  - 
+  - Player
+  - Wearable
   - 
   - 
   - 

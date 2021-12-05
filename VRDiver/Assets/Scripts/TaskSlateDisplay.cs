@@ -2,8 +2,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-//Displays the task and updates the progress for the task goals.
-public class TaskSlate : Slate
+//Displays the canvas elements of the TaskSlate gameobject and updates its values.
+public class TaskSlateDisplay:MonoBehaviour 
 {
     [SerializeField] TextMeshProUGUI staghornCount;
     [SerializeField] TextMeshProUGUI elkhornCount;
