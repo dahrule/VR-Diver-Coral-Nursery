@@ -10,12 +10,12 @@ public class SwitchHands : MonoBehaviour
     [SerializeField] Transform rightHandInteractor;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         grabInteractable = GetComponent<XRGrabInteractable>();
     }
 
-    // Update is called once per frame
+    //Called from the unity events on the interectable (select event).
     public void SwapHands()
     {
         if(grabInteractable.selectingInteractor.name==leftHandInteractor.name)
@@ -23,7 +23,7 @@ public class SwitchHands : MonoBehaviour
             grabInteractable.attachTransform = leftHandAttach;
         }
 
-        if (grabInteractable.selectingInteractor.name == rightHandInteractor.name)
+        else if (grabInteractable.selectingInteractor.name == rightHandInteractor.name)
         {
             grabInteractable.attachTransform = rightHandAttach;
         }

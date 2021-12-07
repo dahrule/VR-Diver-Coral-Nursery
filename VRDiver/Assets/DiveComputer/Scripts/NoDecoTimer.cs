@@ -9,12 +9,13 @@ public class NoDecoTimer : MonoBehaviour
 {
     [Tooltip("Time update interval for coroutine (s)")]
     [SerializeField] int updateInterval = 60;
-    [Tooltip("No deco starting time (min)")]
+    [Tooltip("how long can the diver be underwater safely (minutes). If reaches zero, is game over.")]
     [SerializeField] int startTime = 5;
-    [Tooltip("Safety margin for No-deco time. Time when diver should start surfacing (min)")]
+    [Tooltip("Safety limit margin for No-deco time (minutes). Time when diver should start surfacing. At this time an alarm starts beeping.")]
     [SerializeField] int timeLimit = 1;
 
     [SerializeField] DiveScreen screen;
+   
 
      public static event Action OnNoDecoTimeOver; //event that indicates when the no-deco time limit has reached the limit, and its time to end the dive.
 

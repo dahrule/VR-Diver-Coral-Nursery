@@ -7,6 +7,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2521799075717275945, guid: 6408d398327330944947a3fa74a15f32, type: 3}
+      propertyPath: Actioner
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2521799075717275945, guid: 6408d398327330944947a3fa74a15f32, type: 3}
+      propertyPath: repeatRate
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2521799075717275945, guid: 6408d398327330944947a3fa74a15f32, type: 3}
+      propertyPath: alertcueSFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 0d60591b67a931640a87749488128006, type: 3}
     - target: {fileID: 3793053647044761455, guid: 6408d398327330944947a3fa74a15f32, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -17,7 +29,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5737742756222656330, guid: 6408d398327330944947a3fa74a15f32, type: 3}
       propertyPath: m_Name
-      value: CoralPlantingSpot Variant
+      value: CoralPlantingSpot Staghorn
       objectReference: {fileID: 0}
     - target: {fileID: 5737742756222656334, guid: 6408d398327330944947a3fa74a15f32, type: 3}
       propertyPath: m_RootOrder

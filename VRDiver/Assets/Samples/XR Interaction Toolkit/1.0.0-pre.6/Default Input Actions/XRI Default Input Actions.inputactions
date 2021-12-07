@@ -92,6 +92,14 @@
                     "interactions": ""
                 },
                 {
+                    "name": "Swim",
+                    "type": "Button",
+                    "id": "1b4f763a-6ea4-4e03-be36-a53c9a9d2c18",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
                     "name": "ActivateValue",
                     "type": "Value",
                     "id": "c9f6bc37-be3c-4527-8095-25ea4ebc7327",
@@ -551,6 +559,17 @@
                     "action": "SlateToggle",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ef616a96-34d3-4b26-95e7-4b68bbd08ce3",
+                    "path": "<XRController>{LeftHand}/triggerPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Generic XR Controller",
+                    "action": "Swim",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -594,6 +613,14 @@
                     "name": "Activate",
                     "type": "Button",
                     "id": "41976d89-60de-4deb-bff9-16b4af96b290",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Swim",
+                    "type": "Button",
+                    "id": "45bcb153-8ff8-4e89-a523-88f8d1908058",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
@@ -1007,6 +1034,17 @@
                     "processors": "",
                     "groups": "Generic XR Controller",
                     "action": "ActivateValue",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "66ec5a3e-3633-4c86-b704-6c4fdcbf3ebf",
+                    "path": "<XRController>{RightHand}/triggerPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Generic XR Controller",
+                    "action": "Swim",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

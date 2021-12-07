@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+
 //Controls the hide/show action of the slatesbook object, and the toggle action between all available slates in the book. 
 public class SlatesManager : MonoBehaviour
 {

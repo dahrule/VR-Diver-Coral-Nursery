@@ -5,13 +5,21 @@ using UnityEngine;
 //Manages the  GameOver screens and level values, such as task goals.
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance;//
+    public static GameManager instance;
 
+    [Header("Game level variables")]
     [Tooltip("How many corals of each type must the player plant to achieve the goal")]
     [Range(0, 5)] public int staghornGoal = 2; 
     [Range(0, 5)] public int elkhornGoal = 1;
+    [Tooltip("Maximum time to complete task before game ends")]
+    [SerializeField] int minutesToCompleteTask = 2;
+    [Tooltip("No deco starting time (minutes)")]
+    [SerializeField] int startTime = 5;
+    [Tooltip("Safety margin for No-deco time. Time when diver should start surfacing (minutes)")]
+    [SerializeField] int timeLimit = 1;
 
-    public bool playModeActive = true;//play mode is used to control the time at which game controls are activated.
+    public  bool playModeActive = true;//play mode is used to control the time at which game controls are activated.
+    public bool PlayModeActive { get { return instance.playModeActive; } }
 
     [Tooltip("Screen appearing when the task is achieved")]
     [SerializeField] GameObject floatingScreenTaskComplete;
@@ -45,7 +53,9 @@ public class GameManager : MonoBehaviour
         if (goalA && goalB)
         {
             floatingScreenTaskComplete.SetActive(true);
+            playModeActive = false;
         }
+
     }
 
     private void GameOver()
@@ -61,14 +71,6 @@ public class GameManager : MonoBehaviour
         UnityEditor.EditorApplication.isPlaying = false;
         #endif
         Application.Quit();
-    }
-
-    //Call on a Button click.
-    public void RestartGame()
-    {
-        
-        SceneManager.LoadScene(0);
-        playModeActive = false;
     }
 
 }

@@ -105,6 +105,14 @@ public class @XRIDefaultInputActions : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
+                    ""name"": ""Swim"",
+                    ""type"": ""Button"",
+                    ""id"": ""1b4f763a-6ea4-4e03-be36-a53c9a9d2c18"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
                     ""name"": ""ActivateValue"",
                     ""type"": ""Value"",
                     ""id"": ""c9f6bc37-be3c-4527-8095-25ea4ebc7327"",
@@ -564,6 +572,17 @@ public class @XRIDefaultInputActions : IInputActionCollection, IDisposable
                     ""action"": ""SlateToggle"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ef616a96-34d3-4b26-95e7-4b68bbd08ce3"",
+                    ""path"": ""<XRController>{LeftHand}/triggerPressed"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Generic XR Controller"",
+                    ""action"": ""Swim"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -607,6 +626,14 @@ public class @XRIDefaultInputActions : IInputActionCollection, IDisposable
                     ""name"": ""Activate"",
                     ""type"": ""Button"",
                     ""id"": ""41976d89-60de-4deb-bff9-16b4af96b290"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Swim"",
+                    ""type"": ""Button"",
+                    ""id"": ""45bcb153-8ff8-4e89-a523-88f8d1908058"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -1022,6 +1049,17 @@ public class @XRIDefaultInputActions : IInputActionCollection, IDisposable
                     ""action"": ""ActivateValue"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""66ec5a3e-3633-4c86-b704-6c4fdcbf3ebf"",
+                    ""path"": ""<XRController>{RightHand}/triggerPressed"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Generic XR Controller"",
+                    ""action"": ""Swim"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -1098,6 +1136,7 @@ public class @XRIDefaultInputActions : IInputActionCollection, IDisposable
         m_XRILeftHand_Select = m_XRILeftHand.FindAction("Select", throwIfNotFound: true);
         m_XRILeftHand_SelectValue = m_XRILeftHand.FindAction("SelectValue", throwIfNotFound: true);
         m_XRILeftHand_Activate = m_XRILeftHand.FindAction("Activate", throwIfNotFound: true);
+        m_XRILeftHand_Swim = m_XRILeftHand.FindAction("Swim", throwIfNotFound: true);
         m_XRILeftHand_ActivateValue = m_XRILeftHand.FindAction("ActivateValue", throwIfNotFound: true);
         m_XRILeftHand_UIPress = m_XRILeftHand.FindAction("UI Press", throwIfNotFound: true);
         m_XRILeftHand_HapticDevice = m_XRILeftHand.FindAction("Haptic Device", throwIfNotFound: true);
@@ -1117,6 +1156,7 @@ public class @XRIDefaultInputActions : IInputActionCollection, IDisposable
         m_XRIRightHand_Select = m_XRIRightHand.FindAction("Select", throwIfNotFound: true);
         m_XRIRightHand_SelectValue = m_XRIRightHand.FindAction("SelectValue", throwIfNotFound: true);
         m_XRIRightHand_Activate = m_XRIRightHand.FindAction("Activate", throwIfNotFound: true);
+        m_XRIRightHand_Swim = m_XRIRightHand.FindAction("Swim", throwIfNotFound: true);
         m_XRIRightHand_ActivateValue = m_XRIRightHand.FindAction("ActivateValue", throwIfNotFound: true);
         m_XRIRightHand_UIPress = m_XRIRightHand.FindAction("UI Press", throwIfNotFound: true);
         m_XRIRightHand_HapticDevice = m_XRIRightHand.FindAction("Haptic Device", throwIfNotFound: true);
@@ -1222,6 +1262,7 @@ public class @XRIDefaultInputActions : IInputActionCollection, IDisposable
     private readonly InputAction m_XRILeftHand_Select;
     private readonly InputAction m_XRILeftHand_SelectValue;
     private readonly InputAction m_XRILeftHand_Activate;
+    private readonly InputAction m_XRILeftHand_Swim;
     private readonly InputAction m_XRILeftHand_ActivateValue;
     private readonly InputAction m_XRILeftHand_UIPress;
     private readonly InputAction m_XRILeftHand_HapticDevice;
@@ -1243,6 +1284,7 @@ public class @XRIDefaultInputActions : IInputActionCollection, IDisposable
         public InputAction @Select => m_Wrapper.m_XRILeftHand_Select;
         public InputAction @SelectValue => m_Wrapper.m_XRILeftHand_SelectValue;
         public InputAction @Activate => m_Wrapper.m_XRILeftHand_Activate;
+        public InputAction @Swim => m_Wrapper.m_XRILeftHand_Swim;
         public InputAction @ActivateValue => m_Wrapper.m_XRILeftHand_ActivateValue;
         public InputAction @UIPress => m_Wrapper.m_XRILeftHand_UIPress;
         public InputAction @HapticDevice => m_Wrapper.m_XRILeftHand_HapticDevice;
@@ -1279,6 +1321,9 @@ public class @XRIDefaultInputActions : IInputActionCollection, IDisposable
                 @Activate.started -= m_Wrapper.m_XRILeftHandActionsCallbackInterface.OnActivate;
                 @Activate.performed -= m_Wrapper.m_XRILeftHandActionsCallbackInterface.OnActivate;
                 @Activate.canceled -= m_Wrapper.m_XRILeftHandActionsCallbackInterface.OnActivate;
+                @Swim.started -= m_Wrapper.m_XRILeftHandActionsCallbackInterface.OnSwim;
+                @Swim.performed -= m_Wrapper.m_XRILeftHandActionsCallbackInterface.OnSwim;
+                @Swim.canceled -= m_Wrapper.m_XRILeftHandActionsCallbackInterface.OnSwim;
                 @ActivateValue.started -= m_Wrapper.m_XRILeftHandActionsCallbackInterface.OnActivateValue;
                 @ActivateValue.performed -= m_Wrapper.m_XRILeftHandActionsCallbackInterface.OnActivateValue;
                 @ActivateValue.canceled -= m_Wrapper.m_XRILeftHandActionsCallbackInterface.OnActivateValue;
@@ -1334,6 +1379,9 @@ public class @XRIDefaultInputActions : IInputActionCollection, IDisposable
                 @Activate.started += instance.OnActivate;
                 @Activate.performed += instance.OnActivate;
                 @Activate.canceled += instance.OnActivate;
+                @Swim.started += instance.OnSwim;
+                @Swim.performed += instance.OnSwim;
+                @Swim.canceled += instance.OnSwim;
                 @ActivateValue.started += instance.OnActivateValue;
                 @ActivateValue.performed += instance.OnActivateValue;
                 @ActivateValue.canceled += instance.OnActivateValue;
@@ -1383,6 +1431,7 @@ public class @XRIDefaultInputActions : IInputActionCollection, IDisposable
     private readonly InputAction m_XRIRightHand_Select;
     private readonly InputAction m_XRIRightHand_SelectValue;
     private readonly InputAction m_XRIRightHand_Activate;
+    private readonly InputAction m_XRIRightHand_Swim;
     private readonly InputAction m_XRIRightHand_ActivateValue;
     private readonly InputAction m_XRIRightHand_UIPress;
     private readonly InputAction m_XRIRightHand_HapticDevice;
@@ -1402,6 +1451,7 @@ public class @XRIDefaultInputActions : IInputActionCollection, IDisposable
         public InputAction @Select => m_Wrapper.m_XRIRightHand_Select;
         public InputAction @SelectValue => m_Wrapper.m_XRIRightHand_SelectValue;
         public InputAction @Activate => m_Wrapper.m_XRIRightHand_Activate;
+        public InputAction @Swim => m_Wrapper.m_XRIRightHand_Swim;
         public InputAction @ActivateValue => m_Wrapper.m_XRIRightHand_ActivateValue;
         public InputAction @UIPress => m_Wrapper.m_XRIRightHand_UIPress;
         public InputAction @HapticDevice => m_Wrapper.m_XRIRightHand_HapticDevice;
@@ -1436,6 +1486,9 @@ public class @XRIDefaultInputActions : IInputActionCollection, IDisposable
                 @Activate.started -= m_Wrapper.m_XRIRightHandActionsCallbackInterface.OnActivate;
                 @Activate.performed -= m_Wrapper.m_XRIRightHandActionsCallbackInterface.OnActivate;
                 @Activate.canceled -= m_Wrapper.m_XRIRightHandActionsCallbackInterface.OnActivate;
+                @Swim.started -= m_Wrapper.m_XRIRightHandActionsCallbackInterface.OnSwim;
+                @Swim.performed -= m_Wrapper.m_XRIRightHandActionsCallbackInterface.OnSwim;
+                @Swim.canceled -= m_Wrapper.m_XRIRightHandActionsCallbackInterface.OnSwim;
                 @ActivateValue.started -= m_Wrapper.m_XRIRightHandActionsCallbackInterface.OnActivateValue;
                 @ActivateValue.performed -= m_Wrapper.m_XRIRightHandActionsCallbackInterface.OnActivateValue;
                 @ActivateValue.canceled -= m_Wrapper.m_XRIRightHandActionsCallbackInterface.OnActivateValue;
@@ -1485,6 +1538,9 @@ public class @XRIDefaultInputActions : IInputActionCollection, IDisposable
                 @Activate.started += instance.OnActivate;
                 @Activate.performed += instance.OnActivate;
                 @Activate.canceled += instance.OnActivate;
+                @Swim.started += instance.OnSwim;
+                @Swim.performed += instance.OnSwim;
+                @Swim.canceled += instance.OnSwim;
                 @ActivateValue.started += instance.OnActivateValue;
                 @ActivateValue.performed += instance.OnActivateValue;
                 @ActivateValue.canceled += instance.OnActivateValue;
@@ -1558,6 +1614,7 @@ public class @XRIDefaultInputActions : IInputActionCollection, IDisposable
         void OnSelect(InputAction.CallbackContext context);
         void OnSelectValue(InputAction.CallbackContext context);
         void OnActivate(InputAction.CallbackContext context);
+        void OnSwim(InputAction.CallbackContext context);
         void OnActivateValue(InputAction.CallbackContext context);
         void OnUIPress(InputAction.CallbackContext context);
         void OnHapticDevice(InputAction.CallbackContext context);
@@ -1578,6 +1635,7 @@ public class @XRIDefaultInputActions : IInputActionCollection, IDisposable
         void OnSelect(InputAction.CallbackContext context);
         void OnSelectValue(InputAction.CallbackContext context);
         void OnActivate(InputAction.CallbackContext context);
+        void OnSwim(InputAction.CallbackContext context);
         void OnActivateValue(InputAction.CallbackContext context);
         void OnUIPress(InputAction.CallbackContext context);
         void OnHapticDevice(InputAction.CallbackContext context);
