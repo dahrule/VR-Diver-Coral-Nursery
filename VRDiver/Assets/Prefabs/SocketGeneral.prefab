@@ -220,7 +220,7 @@ MonoBehaviour:
       m_Calls: []
   m_ShowInteractableHoverMeshes: 1
   m_InteractableHoverMeshMaterial: {fileID: 2100000, guid: 3f711eb0e1a21244394cdcb6a770c84e, type: 2}
-  m_InteractableCantHoverMeshMaterial: {fileID: 2100000, guid: 8e501d3dbd1f66540b1eb08356a9ce15, type: 2}
+  m_InteractableCantHoverMeshMaterial: {fileID: 2100000, guid: 4439b199277f7404eac75ed4c7f269df, type: 2}
   m_SocketActive: 1
   m_InteractableHoverScale: 1
   m_RecycleDelayTime: 1

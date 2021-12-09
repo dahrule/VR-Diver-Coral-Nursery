@@ -1,26 +1,24 @@
 using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Events;
 
-//This script represents the diver's no-decompression time. It indicates the time remaining to be safe underwater. Currently, it is implemented as a fixed countdown timer that starts at the time of each dive. The game ends when the timer reaches the No deco time limit.
+
+//This script represents the diver's no-decompression time which indicates the time remaining to be safe underwater. Currently, it is implemented as a fixed countdown timer that runs at the start of the game. When the timer reaches zero the game is over.
 
 public class NoDecoTimer : MonoBehaviour
 {
-    [Tooltip("Time update interval for coroutine (s)")]
-    [SerializeField] int updateInterval = 60;
-    [Tooltip("how long can the diver be underwater safely (minutes). If reaches zero, is game over.")]
-    [SerializeField] int startTime = 5;
-    [Tooltip("Safety limit margin for No-deco time (minutes). Time when diver should start surfacing. At this time an alarm starts beeping.")]
-    [SerializeField] int timeLimit = 1;
+    [SerializeField] DiveScreen screen; //reference to the dive screen to update the timer display.
 
-    [SerializeField] DiveScreen screen;
-   
+    public int TimeLeftMin; //The time in minutes left for the game to be over.  //set by the game manager.
 
-     public static event Action OnNoDecoTimeOver; //event that indicates when the no-deco time limit has reached the limit, and its time to end the dive.
+    public static event Action<int> OnAlertStart; //event that indicates when the sound alert should start.
+
+    const int updateInterval = 60; //Time interval in seconds for the timer update coroutine. default every minute.
+
+    int alertStartMin = 5; //Time in minutes at which the sound alert starts.
 
 
-    //When the object containing this script becomes enabled and active, the coroutine -depth sense- starts runnnig.
+    //The coroutine -TimeCountDown- starts and stops runnnig when the object containing this script becomes enabled or disabled, respectively. 
     private void OnEnable()
     {
         StartCoroutine(TimeCountDownRoutine(updateInterval));
@@ -35,11 +33,22 @@ public class NoDecoTimer : MonoBehaviour
     {
         while (true)
         {
-           screen.noDecTime_text.text = startTime.ToString(); //display timer on computer screen.
-            if (startTime == timeLimit) OnNoDecoTimeOver?.Invoke(); //Notify that the safety margin has been reached.
+
+            //update timer display on the computer screen.
+            screen.noDecTime_text.text = TimeLeftMin.ToString();
+
+            //Check if its time to send a sound alert.
+            if (TimeLeftMin == alertStartMin) OnAlertStart?.Invoke(alertStartMin);
+
+            //stop coroutine when time reaches zero.
+            if (TimeLeftMin <= 0) StopCoroutine(TimeCountDownRoutine(updateInterval));
+
+            //Update time left by one minute and clamp to 0.
+            TimeLeftMin -= updateInterval / updateInterval; 
+            TimeLeftMin = Mathf.Clamp(TimeLeftMin, 0, TimeLeftMin);
+
             yield return new WaitForSeconds(updateInterval);
-            startTime -= 1;
-            if (startTime < 1) startTime = 0;   //clamps start time value to zero.
+           
         }
         
     }

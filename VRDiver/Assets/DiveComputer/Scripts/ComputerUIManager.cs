@@ -71,6 +71,12 @@ public class ComputerUIManager : MonoBehaviour
         activeScreen.HandleDownButtonPress();
     }
 
+    //Called on the OnClick unity event of the "SELECT" Button.
+    public void HandleSelectBottonPress()
+    {
+        activeScreen.HandleSelectButtonPress();
+    }
+
     //Enables routines on the computer related to diving  when a dive starts.
     /*public void EnterDiveMode()
     {

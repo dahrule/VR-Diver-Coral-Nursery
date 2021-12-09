@@ -9,7 +9,7 @@ public class CoralPlanting : MonoBehaviour
 {
     #region Variables
     public static Dictionary<CoralTypes, int> coralsCollection = InitDict(); //stores planted corals amounts.
-    public static event Action<Dictionary<CoralTypes,int>> OnPlantingActionComplete;
+    public static event Action<Dictionary<CoralTypes, int>> OnPlantingActionComplete;
 
     [Tooltip("Time in seconds that a coral fragment being held must remain inside the trigger for the planting action to be completed")]
     [SerializeField] float secondsToCompleteAction = 5f;
@@ -26,6 +26,12 @@ public class CoralPlanting : MonoBehaviour
 
     [Tooltip("A visual cue that indicates how much time is left to complete the action.")]
     [SerializeField] ProgressBar progressBar;
+
+    [SerializeField] Material incorrectTypeMaterial;
+    [SerializeField] Material correctTypeMaterial;
+    [SerializeField] Material defaultMaterial;
+    [SerializeField] MeshRenderer PlantingZoneMeshRenderer;
+    
 
     private IEnumerator plantingActionCheck; //defines the coroutine in which the planting action is checked for execution.
     private float coroutineTimeStep = 0.1f; //The time rate at which the executeAction coroutine runs.
@@ -47,10 +53,13 @@ public class CoralPlanting : MonoBehaviour
     {
         var coral = other.GetComponent<Coral>();
         
+        if(coral != null && coralAtSpot==null && (coral.coralType != Actioner || coral.IsPlantationReady)) PlantingZoneMeshRenderer.material = incorrectTypeMaterial;
+
         //Start planting-action check only if the object colliding the planting spot trigger is of the correct coral type and is being held.
         if (coral!=null && coralAtSpot == null && coral.coralType == Actioner && coral.IsPlantationReady)
         {
             coralAtSpot = other.gameObject;
+            PlantingZoneMeshRenderer.material = correctTypeMaterial;
 
             if (coralAtSpot.GetComponent<MyGrabable>().IsHeld)
             {
@@ -73,6 +82,8 @@ public class CoralPlanting : MonoBehaviour
         if (coral != null && coral.coralType == Actioner)// case: coral leaves the trigger.
         {
             coralAtSpot = null;
+            PlantingZoneMeshRenderer.material = defaultMaterial;
+
             InterruptAction(); //stops sounds
             StopCoroutine(plantingActionCheck);
         }

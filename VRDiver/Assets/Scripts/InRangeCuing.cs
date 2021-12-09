@@ -16,33 +16,31 @@ public class InRangeCuing : MonoBehaviour
     [SerializeField] float distanceToStopPlaying = 1f;
 
     private float clipLength;
+    private Vector3 plantingSpotPosition;
 
     private void Awake()
     {
-        if (audioSource == null) audioSource=GetComponentInParent<AudioSource>();    
+        if (audioSource == null) audioSource=GetComponentInParent<AudioSource>();
+        plantingSpotPosition = GetComponentInParent<Transform>().position;
+        
     }
 
     private void Start()
     {
         InRangeCuing.audioSources.Add(this.audioSource);
         clipLength = alertcueSFX.length;
-
-        
-
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag(Actioner)&& !IsASourceAlreadyPlaying())
         {
-            Debug.Log("HOLA");
             audioSource.clip = alertcueSFX;
             InvokeRepeating("PlaySFX",1f,clipLength+repeatRate);
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log("no");
         if (other.gameObject.CompareTag(Actioner))
         {
             CancelInvoke();
@@ -53,7 +51,10 @@ public class InRangeCuing : MonoBehaviour
     {
         if (other.gameObject.CompareTag(Actioner))
         {
-           // Debug.Log("HOA");
+            var playerPosition = other.gameObject.transform.position;
+            //Get the distance between the player and the coral spot, if it is to close, stop playing the cue sound.
+            float playerDistanceToPlantingSpot=Vector3.Distance(playerPosition,plantingSpotPosition);
+            if(playerDistanceToPlantingSpot<distanceToStopPlaying) CancelInvoke();
         }
     }
 

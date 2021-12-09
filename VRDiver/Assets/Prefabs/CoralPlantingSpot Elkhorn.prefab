@@ -27,6 +27,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CoralPlantingSpot Elkhorn
       objectReference: {fileID: 0}
+    - target: {fileID: 5737742756222656330, guid: 6408d398327330944947a3fa74a15f32, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 5737742756222656334, guid: 6408d398327330944947a3fa74a15f32, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -72,6 +76,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5737742756222656369, guid: 6408d398327330944947a3fa74a15f32, type: 3}
+      propertyPath: Mesh
+      value: 
+      objectReference: {fileID: 9069002255949825620}
+    - target: {fileID: 5737742756222656369, guid: 6408d398327330944947a3fa74a15f32, type: 3}
       propertyPath: Actioner
       value: 1
       objectReference: {fileID: 0}
@@ -79,9 +87,23 @@ PrefabInstance:
       propertyPath: secondsToCompleteAction
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 5737742756222656369, guid: 6408d398327330944947a3fa74a15f32, type: 3}
+      propertyPath: PlantingZoneMeshRenderer
+      value: 
+      objectReference: {fileID: 7411638492477040513}
     - target: {fileID: 8177472413695094431, guid: 6408d398327330944947a3fa74a15f32, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6408d398327330944947a3fa74a15f32, type: 3}
+--- !u!1 &9069002255949825620 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8177472413695094431, guid: 6408d398327330944947a3fa74a15f32, type: 3}
+  m_PrefabInstance: {fileID: 911880333698345163}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &7411638492477040513 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7673231777824345930, guid: 6408d398327330944947a3fa74a15f32, type: 3}
+  m_PrefabInstance: {fileID: 911880333698345163}
+  m_PrefabAsset: {fileID: 0}

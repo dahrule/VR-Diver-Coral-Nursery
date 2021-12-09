@@ -1,8 +1,7 @@
-using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using UnityEngine;
 
-//Manages the  GameOver screens and level values, such as task goals.
+//Manages the  GameOver screens and level values, such as task goals and time to complete task.
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
@@ -11,35 +10,47 @@ public class GameManager : MonoBehaviour
     [Tooltip("How many corals of each type must the player plant to achieve the goal")]
     [Range(0, 5)] public int staghornGoal = 2; 
     [Range(0, 5)] public int elkhornGoal = 1;
-    [Tooltip("Maximum time to complete task before game ends")]
-    [SerializeField] int minutesToCompleteTask = 2;
-    [Tooltip("No deco starting time (minutes)")]
-    [SerializeField] int startTime = 5;
-    [Tooltip("Safety margin for No-deco time. Time when diver should start surfacing (minutes)")]
-    [SerializeField] int timeLimit = 1;
+    [Tooltip("Time to complete task before game ends")]
+    [SerializeField] int minutesToCompleteTask = 6;
 
-    public  bool playModeActive = true;//play mode is used to control the time at which game controls are activated.
+    [SerializeField] NoDecoTimer timer;
+
+    private  bool playModeActive = true;//play mode is used to control when game controls are active, they become inactive when gameover screens appear.
     public bool PlayModeActive { get { return instance.playModeActive; } }
 
     [Tooltip("Screen appearing when the task is achieved")]
     [SerializeField] GameObject floatingScreenTaskComplete;
-    [Tooltip("Screen appearing when the decompression time reaches the limit.")]
+    [Tooltip("Screen appearing when the time to complete task is over.")]
     [SerializeField] GameObject floatingScreenTimeEnds;
 
-   
+
 
     private void Awake()
     {
+        //Get references to variables.
         instance = this;
+
+        //register responses to events.
         CoralPlanting.OnPlantingActionComplete += CheckCompletedGoals; //register the response to the  OnPlantingActionComplete event.
-        NoDecoTimer.OnNoDecoTimeOver += GameOver; //register the response to the OnNoDecoTimeOver event.
+        SoundAlert.OnTimeOver += GameOver;
+        
+        //Set the time on the NoDecoTimer script.
+        timer.TimeLeftMin = minutesToCompleteTask; //set the timer inside the 
         
 
-        //Disable endgame screens.
+    }
+    private void Start()
+    {
+       
+        EnterPlayMode();
+    }
+
+    private void EnterPlayMode()
+    {
+        //Disable endgame screens && .
         floatingScreenTimeEnds.SetActive(false);
         floatingScreenTaskComplete.SetActive(false);
         playModeActive = true;
-
     }
 
     private void CheckCompletedGoals(Dictionary<CoralTypes, int> coralsPlanted)
@@ -58,13 +69,14 @@ public class GameManager : MonoBehaviour
 
     }
 
+
     private void GameOver()
     {
         floatingScreenTimeEnds.SetActive(true);
         playModeActive = false;
     }
     
-    //Call on a Button click.
+    //Call on a Button click on the gameover screens.
     public void QuitGame()
     {
         #if UNITY_EDITOR

@@ -71,7 +71,7 @@ public class ArmSwingMotion : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (swimModeActive)
+        if (GameManager.instance.PlayModeActive && swimModeActive)
         {
             //Get current position of hands.
             currentPos = controller.transform.position;
