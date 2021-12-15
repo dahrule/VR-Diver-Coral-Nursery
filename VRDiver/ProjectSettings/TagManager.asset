@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Coral
   - Surface
+  - RulerAttachPoint
   layers:
   - Default
   - TransparentFX
@@ -15,13 +16,13 @@ TagManager:
   - UI
   - Ground
   - Grab
-  - Teleport
+  - 
   - Ruler
   - Coral
   - Player
-  - Wearable
   - 
-  - 
+  - Hand
+  - Interactable
   - 
   - 
   - 

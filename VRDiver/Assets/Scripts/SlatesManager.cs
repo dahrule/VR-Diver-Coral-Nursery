@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 
-//Controls the hide/show action of the slatesbook object, and the toggle action between all available slates in the book. 
+//Controls the hide/show action of the slatesbook object, and the toggle action between all available slate-canvases in the book. 
 public class SlatesManager : MonoBehaviour
 {
     #region Variables
@@ -11,6 +11,7 @@ public class SlatesManager : MonoBehaviour
     [SerializeField] InputActionReference slateDisplayInputAction; //reference to the button mapped to this action.
 
     [SerializeField] Slate[] slates; //stores all available slates.
+    [SerializeField] GameObject slateGraphic; //The graphic of the slatebook which is the parent of all canvases (slates).
 
     [Tooltip("First slate appearing at game start")]
     [SerializeField] Slate startingSlate;
@@ -35,6 +36,8 @@ public class SlatesManager : MonoBehaviour
     private void Start()
     {
         //Hide/Disable all slates except for the active one which is the startingSlate.
+        slateGraphic.SetActive(true);
+        toggleAllow = true;
         DisableSlates();
         activeSlate = startingSlate;
         slateIndex = Array.IndexOf(slates, activeSlate);//get the array index of the active slate.
@@ -46,6 +49,9 @@ public class SlatesManager : MonoBehaviour
     private void ToggleEnableDisable(InputAction.CallbackContext obj)
     {
         toggleAllow = !toggleAllow;
+        
+        slateGraphic.SetActive((!activeSlate.gameObject.activeInHierarchy));
+        DisableSlates();
         activeSlate.gameObject.SetActive(!activeSlate.gameObject.activeInHierarchy);
     }
 

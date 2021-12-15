@@ -3,7 +3,12 @@ guid: 530ba2a2dad10644d8270a36b10816eb
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: SuntoComputer
+    second: {fileID: 2100000, guid: d81dee2f6a2b57f4592444e2e640f6a3, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1548056582617884237, guid: 6408d398327330944947a3fa74a15f32, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2521799075717275945, guid: 6408d398327330944947a3fa74a15f32, type: 3}
       propertyPath: Actioner
       value: Player
@@ -23,6 +27,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4855416352343637478, guid: 6408d398327330944947a3fa74a15f32, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5591285923139910528, guid: 6408d398327330944947a3fa74a15f32, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -8936719625416852467, guid: ac27c95a5473ee147b52f4da4a5ab95a, type: 3}
     - target: {fileID: 5737742756222656330, guid: 6408d398327330944947a3fa74a15f32, type: 3}
       propertyPath: m_Name
       value: CoralPlantingSpot Elkhorn
@@ -78,10 +90,22 @@ PrefabInstance:
     - target: {fileID: 5737742756222656369, guid: 6408d398327330944947a3fa74a15f32, type: 3}
       propertyPath: Mesh
       value: 
-      objectReference: {fileID: 9069002255949825620}
+      objectReference: {fileID: 0}
     - target: {fileID: 5737742756222656369, guid: 6408d398327330944947a3fa74a15f32, type: 3}
       propertyPath: Actioner
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5737742756222656369, guid: 6408d398327330944947a3fa74a15f32, type: 3}
+      propertyPath: CoralAttachPoint
+      value: 
+      objectReference: {fileID: 4829874163788052521}
+    - target: {fileID: 5737742756222656369, guid: 6408d398327330944947a3fa74a15f32, type: 3}
+      propertyPath: PlantingZoneMesh
+      value: 
+      objectReference: {fileID: 4992605089018601676}
+    - target: {fileID: 5737742756222656369, guid: 6408d398327330944947a3fa74a15f32, type: 3}
+      propertyPath: PlantingZoneRenderer
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5737742756222656369, guid: 6408d398327330944947a3fa74a15f32, type: 3}
       propertyPath: secondsToCompleteAction
@@ -90,20 +114,64 @@ PrefabInstance:
     - target: {fileID: 5737742756222656369, guid: 6408d398327330944947a3fa74a15f32, type: 3}
       propertyPath: PlantingZoneMeshRenderer
       value: 
-      objectReference: {fileID: 7411638492477040513}
+      objectReference: {fileID: 0}
+    - target: {fileID: 5975733294777264594, guid: 6408d398327330944947a3fa74a15f32, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8177472413695094431, guid: 6408d398327330944947a3fa74a15f32, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8806762103498765349, guid: 6408d398327330944947a3fa74a15f32, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.56834084
+      objectReference: {fileID: 0}
+    - target: {fileID: 8806762103498765349, guid: 6408d398327330944947a3fa74a15f32, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.56834084
+      objectReference: {fileID: 0}
+    - target: {fileID: 8806762103498765349, guid: 6408d398327330944947a3fa74a15f32, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.56834084
+      objectReference: {fileID: 0}
+    - target: {fileID: 8806762103498765349, guid: 6408d398327330944947a3fa74a15f32, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8806762103498765349, guid: 6408d398327330944947a3fa74a15f32, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8806762103498765349, guid: 6408d398327330944947a3fa74a15f32, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8806762103498765349, guid: 6408d398327330944947a3fa74a15f32, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8806762103498765349, guid: 6408d398327330944947a3fa74a15f32, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 79.301
+      objectReference: {fileID: 0}
+    - target: {fileID: 8806762103498765349, guid: 6408d398327330944947a3fa74a15f32, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8806762103498765349, guid: 6408d398327330944947a3fa74a15f32, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -90
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6408d398327330944947a3fa74a15f32, type: 3}
---- !u!1 &9069002255949825620 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8177472413695094431, guid: 6408d398327330944947a3fa74a15f32, type: 3}
+--- !u!4 &4829874163788052521 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5737742757438247138, guid: 6408d398327330944947a3fa74a15f32, type: 3}
   m_PrefabInstance: {fileID: 911880333698345163}
   m_PrefabAsset: {fileID: 0}
---- !u!23 &7411638492477040513 stripped
+--- !u!23 &4992605089018601676 stripped
 MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 7673231777824345930, guid: 6408d398327330944947a3fa74a15f32, type: 3}
+  m_CorrespondingSourceObject: {fileID: 5327456772565485575, guid: 6408d398327330944947a3fa74a15f32, type: 3}
   m_PrefabInstance: {fileID: 911880333698345163}
   m_PrefabAsset: {fileID: 0}

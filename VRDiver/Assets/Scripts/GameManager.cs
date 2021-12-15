@@ -13,15 +13,18 @@ public class GameManager : MonoBehaviour
     [Tooltip("Time to complete task before game ends")]
     [SerializeField] int minutesToCompleteTask = 6;
 
-    [SerializeField] NoDecoTimer timer;
-
-    private  bool playModeActive = true;//play mode is used to control when game controls are active, they become inactive when gameover screens appear.
+    private bool playModeActive = true;//play mode is used to control when game controls are active, they become inactive when gameover screens appear.
     public bool PlayModeActive { get { return instance.playModeActive; } }
+
+    #region References to Game objects
+    [SerializeField] NoDecoTimer timer;
+    [SerializeField] SoundAlert diveComputerAlarm;
 
     [Tooltip("Screen appearing when the task is achieved")]
     [SerializeField] GameObject floatingScreenTaskComplete;
     [Tooltip("Screen appearing when the time to complete task is over.")]
     [SerializeField] GameObject floatingScreenTimeEnds;
+    #endregion
 
 
 
@@ -63,6 +66,7 @@ public class GameManager : MonoBehaviour
         //When all goals are complete, activate the floatingScreenTaskComplete panel.
         if (goalA && goalB)
         {
+            diveComputerAlarm.enabled = false; //disable dive computer alarm.
             floatingScreenTaskComplete.SetActive(true);
             playModeActive = false;
         }

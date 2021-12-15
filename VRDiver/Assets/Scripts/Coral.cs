@@ -9,7 +9,7 @@ public class Coral : MonoBehaviour
     public CoralTypes coralType;
 
     [SerializeField] bool isPlantationReady; //is the coral ready to be planted?
-    public bool IsPlantationReady { get { return isPlantationReady; } }
+    public bool IsPlantationReady { set { isPlantationReady=value; } get { return isPlantationReady; } }
 
 }
 

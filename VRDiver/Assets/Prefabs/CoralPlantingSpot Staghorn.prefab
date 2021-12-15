@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1548056582617884237, guid: 6408d398327330944947a3fa74a15f32, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2521799075717275945, guid: 6408d398327330944947a3fa74a15f32, type: 3}
       propertyPath: Actioner
       value: Player
@@ -75,27 +79,47 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5737742756222656368, guid: 6408d398327330944947a3fa74a15f32, type: 3}
+      propertyPath: Loop
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5737742756222656369, guid: 6408d398327330944947a3fa74a15f32, type: 3}
       propertyPath: Mesh
       value: 
-      objectReference: {fileID: 789999484800317140}
+      objectReference: {fileID: 0}
+    - target: {fileID: 5737742756222656369, guid: 6408d398327330944947a3fa74a15f32, type: 3}
+      propertyPath: CoralAttachPoint
+      value: 
+      objectReference: {fileID: 448052677784263632}
+    - target: {fileID: 5737742756222656369, guid: 6408d398327330944947a3fa74a15f32, type: 3}
+      propertyPath: PlantingZoneMesh
+      value: 
+      objectReference: {fileID: 5182642721618676906}
+    - target: {fileID: 5737742756222656369, guid: 6408d398327330944947a3fa74a15f32, type: 3}
+      propertyPath: PlantingZoneRenderer
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5737742756222656369, guid: 6408d398327330944947a3fa74a15f32, type: 3}
       propertyPath: PlantingZoneMeshRenderer
       value: 
-      objectReference: {fileID: 1294318874940675841}
+      objectReference: {fileID: 0}
+    - target: {fileID: 5975733294777264594, guid: 6408d398327330944947a3fa74a15f32, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8177472413695094431, guid: 6408d398327330944947a3fa74a15f32, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6408d398327330944947a3fa74a15f32, type: 3}
---- !u!1 &789999484800317140 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4855416352343637478, guid: 6408d398327330944947a3fa74a15f32, type: 3}
+--- !u!4 &448052677784263632 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5737742757438247138, guid: 6408d398327330944947a3fa74a15f32, type: 3}
   m_PrefabInstance: {fileID: 5302780934160059186}
   m_PrefabAsset: {fileID: 0}
---- !u!23 &1294318874940675841 stripped
+--- !u!23 &5182642721618676906 stripped
 MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 6368401046447791155, guid: 6408d398327330944947a3fa74a15f32, type: 3}
+  m_CorrespondingSourceObject: {fileID: 1043481832664549272, guid: 6408d398327330944947a3fa74a15f32, type: 3}
   m_PrefabInstance: {fileID: 5302780934160059186}
   m_PrefabAsset: {fileID: 0}

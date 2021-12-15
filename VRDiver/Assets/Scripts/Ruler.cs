@@ -17,6 +17,8 @@ public class Ruler : MonoBehaviour
 
     [SerializeField] AudioClip rightSelection;
     [SerializeField] AudioClip wrongSelection;
+    [Tooltip("The attach transform for the ruler at the start of the game")]
+    [SerializeField] Transform rulerPosAtStart;
 
 
     private AudioSource audioSource;
@@ -25,17 +27,22 @@ public class Ruler : MonoBehaviour
     private void Awake()
     {
         if (audioSource == null) audioSource = GetComponent<AudioSource>();
+        //Set ruler's position and rotation to the attach point object on the slate.
+
+        //this.gameObject.transform.position = rulerPosAtStart.transform.position;
+        //this.gameObject.transform.rotation = rulerPosAtStart.transform.rotation;
     }
+
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag(Actioner))
         {
 
-            Coral coral = other.gameObject.GetComponent<Coral>();
+            bool IsTouchingACoral = other.gameObject.TryGetComponent<Coral>(out Coral coral);
 
             //if the coral measured is ready to be planted play a right soundfx, else play a wrong soundfx.
-            if (coral.IsPlantationReady)  
+            if (IsTouchingACoral && coral.IsPlantationReady)  
             {
                 audioSource.clip = rightSelection;
                 audioSource.PlayDelayed(timeToRegisterMeasurement);
@@ -46,5 +53,7 @@ public class Ruler : MonoBehaviour
                 audioSource.PlayDelayed(timeToRegisterMeasurement);
             }
         }
+        
+        
     }
 }

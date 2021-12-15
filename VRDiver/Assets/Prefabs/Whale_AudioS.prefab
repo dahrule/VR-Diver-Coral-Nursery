@@ -143,4 +143,4 @@ MonoBehaviour:
   probability: 4
   repeatRate: 300
   firstplayTime: 300
-  callSFX: {fileID: 8300000, guid: e3a3e48a742c0f94491b7c1855ca28ea, type: 3}
+  callSFX: {fileID: 8300000, guid: bf667cea8b925e748b953c4b96ff2210, type: 3}
