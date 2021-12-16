@@ -7,7 +7,7 @@ public class WhaleSoundPlayer : MonoBehaviour
 {
     [Tooltip("Probability of playing the sound when choosing a number between 0 and 10")]
     [Range(0, 10)]
-    [SerializeField] int probability=4; 
+    [SerializeField] int probability=7; 
     [Tooltip("How often in seconds, is the repeating function called.")]
     [SerializeField] float repeatRate= 5 * 60; 
     [Tooltip("Time in seconds before the first call of the repeating fuction")]

@@ -168,7 +168,7 @@ MonoBehaviour:
   incorrectTypeMaterial: {fileID: 2100000, guid: 4439b199277f7404eac75ed4c7f269df, type: 2}
   correctTypeMaterial: {fileID: 2100000, guid: 3f711eb0e1a21244394cdcb6a770c84e, type: 2}
   defaultMaterial: {fileID: 2100000, guid: 5d27c331507383e49bb31f75e29c1187, type: 2}
-  PlantingZoneRenderer: {fileID: 0}
+  PlantingZoneMesh: {fileID: 0}
 --- !u!1 &5737742756347194206
 GameObject:
   m_ObjectHideFlags: 0
@@ -593,7 +593,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8628666602425363109}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cb4a1120ebb7cbb45a4c047f40e2f9e6, type: 3}
   m_Name: 

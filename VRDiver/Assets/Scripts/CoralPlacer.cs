@@ -15,7 +15,9 @@ public class CoralPlacer : MonoBehaviour
         for (int i = 0; i < corals.Length; i++)
         {
             corals[i].IsPlantationReady = AssignRandomValue();//Randomly assign a value to the field IsPlantation ready.
+            //corals[i].gameObject.GetComponent<Rigidbody>().isKinematic = true;
             coralSockets[i].startingSelectedInteractable = corals[i].gameObject.GetComponent<XRBaseInteractable>();//Assign the instantiated coral gameobject to a socket at the tower.
+            //corals[i].gameObject.GetComponent<Rigidbody>().isKinematic = false;
         }
     }
 

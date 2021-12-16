@@ -170,7 +170,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4884426754485299816
 RectTransform:
   m_ObjectHideFlags: 0
@@ -401,7 +401,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &7060386900619155932
 RectTransform:
   m_ObjectHideFlags: 0
@@ -534,7 +534,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 90, y: -90, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0874, y: 0}
+  m_AnchoredPosition: {x: 0.0648, y: -0}
   m_SizeDelta: {x: 107.11, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7060386900927218769
@@ -668,7 +668,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 90, y: -90, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.090400025, y: -0.000000081257895}
+  m_AnchoredPosition: {x: 0.0678, y: -0}
   m_SizeDelta: {x: 107.11, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7060386900953025326
@@ -831,7 +831,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 27f246615b3390e4897f666d0b67cc0b, type: 2}
+  - {fileID: 2100000, guid: 50ddf0d4a0a491549b6c82c13be16a62, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -892,7 +892,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7060386901418705748}
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 0, y: 0, z: 0.06220001}
+  m_LocalPosition: {x: 0, y: 0, z: 0.0622}
   m_LocalScale: {x: 0.001720205, y: 0.001720205, z: 0.001720205}
   m_Children: []
   m_Father: {fileID: 7060386900619155932}
@@ -900,7 +900,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 90, y: -90, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.13369997, y: 0.00000014086254}
+  m_AnchoredPosition: {x: 0.1111, y: 0}
   m_SizeDelta: {x: 107.11, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7060386901418705737
@@ -1065,9 +1065,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Task:\nGrab a total of      corals from the nursery tower of length greater
-    than 10 cm, and find appropriate spots in the reef to plant them.\n\nStaghorn\t 
-    /\n\nElkhorn\t  /\n"
+  m_text: "Task:\nGrab a total of      corals from the nursery tower of an appropriate
+    length, and find the right spots in the reef to plant them.\n\nStaghorn\t  /\n\nElkhorn\t 
+    /\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1170,7 +1170,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 90, y: -90, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.1347, y: 0}
+  m_AnchoredPosition: {x: 0.1121, y: -0}
   m_SizeDelta: {x: 107.11, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7060386901889439781

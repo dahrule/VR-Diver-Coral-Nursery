@@ -8,15 +8,16 @@ public class Boat : MonoBehaviour
 
     [SerializeField] Transform player; //The transform of the player.
     [SerializeField] int maxdistanceFromPlayer= 10; //the distance at which the boat starts following the player.
-    [SerializeField] int mindistanceFromPlayer = 5; //the distance at which the boat stops following the player.
+    
+    [SerializeField] float interval=2f; //interval of time in seconds of the BoatRoutine coroutine.
+    
 
     [Header("SFX audio clips")]
-    [SerializeField] AudioClip startEngine_sfx;
-    [SerializeField] AudioClip stopEngine_sfx;
-    [SerializeField] AudioClip runEngine_sfx;
+   [SerializeField] AudioClip runEngine_sfx;
 
-    Vector2 playerPosition;
-    Vector2 boatposition;
+    Vector2 playerhorizontalPosition;
+    Vector2 boathorizontalPosition;
+    float speed;
 
     AudioSource audiosource;
     
@@ -30,30 +31,34 @@ public class Boat : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Create vectors describing the boat's and player's movement in the horizontal plane only.
-        boatposition = new Vector2(this.gameObject.transform.position.x, this.gameObject.transform.position.z);
-        boatposition = new Vector2(player.gameObject.transform.position.x, player.gameObject.transform.position.z);
+        speed = maxdistanceFromPlayer / runEngine_sfx.length;
+        this.gameObject.transform.position = new Vector3(player.transform.position.x+10,20,player.transform.position.z);
+        StartCoroutine(BoatRoutine());
     }
 
     // Update is called once per frame
-    void Update()
+    IEnumerator BoatRoutine()
     {
-        //Get distance to player
-        var distanceToPlayer = Vector3.Distance(boatposition,playerPosition);
-        if (distanceToPlayer > maxdistanceFromPlayer)
+        while(true)
         {
-            //Play start engine sfx.
-            if(!audiosource.isPlaying)
+            boathorizontalPosition = new Vector2(this.gameObject.transform.position.x, this.gameObject.transform.position.z);
+            playerhorizontalPosition = new Vector2(player.transform.position.x, player.transform.position.z);
+            //Get distance to player
+            var distanceToPlayer = Vector2.Distance(boathorizontalPosition, playerhorizontalPosition);
+            if (distanceToPlayer > maxdistanceFromPlayer)
             {
-                audiosource.PlayOneShot(startEngine_sfx);
+                Vector2 positionInPlane = Vector2.MoveTowards(boathorizontalPosition, playerhorizontalPosition, speed*interval);
+                this.gameObject.transform.position = new Vector3(positionInPlane.x, gameObject.transform.position.y, positionInPlane.y);
+
+                //Play start engine sfx.
+                if (!audiosource.isPlaying)
+                {
+                    audiosource.PlayOneShot(runEngine_sfx);
+                }
             }
+            yield return new WaitForSeconds(interval);
         }
-        else if (distanceToPlayer < mindistanceFromPlayer)
-        {
-            audiosource.Stop();
-            audiosource.clip = (stopEngine_sfx);
-            audiosource.PlayOneShot(stopEngine_sfx);
-        }
+        
 
         
     }

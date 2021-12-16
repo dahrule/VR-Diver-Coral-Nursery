@@ -11,6 +11,7 @@ public class SoundAlert : MonoBehaviour
     [SerializeField] AudioClip alertLongSFX;
     [SerializeField] AudioSource audiosource;
 
+
     private float repeatInterval;//the rate at which the sound alert plays. It increases as the time limit gets closer to zero.
     private float timeSeconds;//time that starts when the event Limit Reached from NoDecoTimer is received.
 
@@ -23,6 +24,13 @@ public class SoundAlert : MonoBehaviour
         NoDecoTimer.OnAlertStart += StartAlertRoutine;//subscribe a response to the OnAlertStart event;
     }
 
+    private void Start()
+    {
+        //Play a long beep to indicate the presence of the computer.
+        audiosource.clip = alertLongSFX;
+        audiosource.PlayDelayed(5f);
+        
+    }
     private void StartAlertRoutine(int timeLimitMin)
     {
         timeSeconds = timeLimitMin*60;//converts the timelimit from minutes to seconds.
